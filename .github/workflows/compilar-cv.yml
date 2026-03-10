@@ -1,40 +1,29 @@
-# ============================================================
-#  GitHub Actions — Compilar CV en LaTeX a PDF
-#  1. Guarda el PDF dentro del repositorio
-#  2. Despliega vista previa en GitHub Pages (sin caché)
-# ============================================================
-
 name: Compilar CV a PDF
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'cv.tex'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # 1. Clonar el repositorio
       - name: Checkout del repositorio
         uses: actions/checkout@v4
 
-      # 2. Compilar LaTeX a PDF
       - name: Compilar LaTeX
         uses: xu-cheng/latex-action@v3
         with:
           root_file: cv.tex
 
-      # 3. Guardar el PDF en el repositorio
       - name: Commit del PDF al repositorio
         run: |
           git config user.name "github-actions[bot]"
@@ -42,22 +31,3 @@ jobs:
           git add -f cv.pdf
           git diff --staged --quiet || git commit -m "📄 PDF actualizado automáticamente"
           git push
-
-      # 4. Preparar archivos para GitHub Pages
-      - name: Preparar sitio
-        run: |
-          mkdir -p _site
-          cp cv.pdf _site/cv.pdf
-          TIMESTAMP=$(date +%s)
-          sed "s/CACHE_BUSTER/$TIMESTAMP/g" index.html > _site/index.html
-
-      # 5. Subir artefacto de Pages
-      - name: Subir artefacto de Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      # 6. Desplegar en GitHub Pages
-      - name: Desplegar en GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
