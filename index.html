@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi CV — Vista Previa</title>
+    <!-- Evitar caché -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,7 +21,6 @@
             flex-direction: column;
         }
 
-        /* ── Barra superior ── */
         .topbar {
             display: flex;
             align-items: center;
@@ -32,7 +35,6 @@
         .topbar h1 {
             font-family: 'DM Serif Display', serif;
             font-size: 22px;
-            letter-spacing: .5px;
         }
         .topbar h1 span { color: #c0392b; }
 
@@ -54,18 +56,10 @@
             transform: translateY(-1px);
             box-shadow: 0 4px 16px rgba(0,0,0,.3);
         }
-        .btn-download {
-            background: #c0392b;
-            color: #fff;
-        }
-        .btn-github {
-            background: #fff;
-            color: #1a1a2e;
-        }
+        .btn-download { background: #c0392b; color: #fff; }
+        .btn-github  { background: #fff; color: #1a1a2e; }
+        .btn-group   { display: flex; gap: 10px; flex-wrap: wrap; }
 
-        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
-
-        /* ── PDF viewer ── */
         .pdf-container {
             flex: 1;
             display: flex;
@@ -73,8 +67,7 @@
             padding: 24px;
         }
 
-        .pdf-container iframe,
-        .pdf-container embed {
+        .pdf-container iframe {
             width: 100%;
             max-width: 900px;
             height: calc(100vh - 110px);
@@ -83,7 +76,6 @@
             box-shadow: 0 8px 40px rgba(0,0,0,.4);
         }
 
-        /* ── Fallback para móviles ── */
         .mobile-fallback {
             display: none;
             text-align: center;
@@ -97,14 +89,10 @@
             margin-bottom: 24px;
             line-height: 1.6;
         }
-        .mobile-fallback .icon {
-            font-size: 64px;
-            margin-bottom: 16px;
-        }
+        .mobile-fallback .icon { font-size: 64px; margin-bottom: 16px; }
 
         @media (max-width: 768px) {
-            .pdf-container iframe,
-            .pdf-container embed { display: none; }
+            .pdf-container iframe { display: none; }
             .mobile-fallback { display: block; }
             .topbar { padding: 14px 18px; }
             .topbar h1 { font-size: 18px; }
@@ -116,7 +104,7 @@
     <div class="topbar">
         <h1>📄 Mi <span>CV</span></h1>
         <div class="btn-group">
-            <a href="cv.pdf" download class="btn btn-download">
+            <a id="downloadBtn" href="cv.pdf" download class="btn btn-download">
                 ⬇ Descargar PDF
             </a>
             <a href="https://github.com/pirple123-ctrl/mi-cv" target="_blank" class="btn btn-github">
@@ -126,14 +114,13 @@
     </div>
 
     <div class="pdf-container">
-        <!-- Vista previa del PDF -->
-        <iframe src="cv.pdf" type="application/pdf"></iframe>
+        <!-- CACHE_BUSTER se reemplaza en el workflow con un timestamp único -->
+        <iframe id="pdfViewer" src="cv.pdf?v=CACHE_BUSTER"></iframe>
 
-        <!-- Fallback para móviles (no soportan iframe con PDF) -->
         <div class="mobile-fallback">
             <div class="icon">📄</div>
-            <p>La vista previa del PDF no está disponible en dispositivos móviles. Descárgalo directamente:</p>
-            <a href="cv.pdf" download class="btn btn-download" style="font-size:16px; padding: 14px 32px;">
+            <p>La vista previa no está disponible en móviles. Descárgalo directamente:</p>
+            <a href="cv.pdf" download class="btn btn-download" style="font-size:16px; padding:14px 32px;">
                 ⬇ Descargar CV en PDF
             </a>
         </div>
