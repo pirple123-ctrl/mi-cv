@@ -1,0 +1,228 @@
+%==========================================================
+%  CV PROFESIONAL — LaTeX + GitHub Actions
+%  Edita tus datos aquí y haz push. GitHub Actions
+%  compilará el PDF automáticamente.
+%==========================================================
+\documentclass[11pt,a4paper]{article}
+
+% ── Paquetes ──────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1.8cm, top=1.6cm, bottom=1.6cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{parskip}
+\usepackage{calc}
+
+% ── Colores ───────────────────────────────────────────────
+\definecolor{accent}{HTML}{B71C1C}
+\definecolor{darktext}{HTML}{1A1A2E}
+\definecolor{graytext}{HTML}{555555}
+\definecolor{lightgray}{HTML}{E0E0E0}
+\definecolor{softbg}{HTML}{F5F5F5}
+
+% ── Configuración general ────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    urlcolor=accent,
+    pdfauthor={Tu Nombre},
+    pdftitle={Curriculum Vitae}
+}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% ── Formato de secciones ─────────────────────────────────
+\titleformat{\section}
+  {\Large\bfseries\color{accent}}
+  {}
+  {0em}
+  {}
+  [\vspace{-6pt}\textcolor{accent}{\rule{\linewidth}{1.5pt}}\vspace{-4pt}]
+
+\titlespacing*{\section}{0pt}{14pt}{8pt}
+
+% ── Comandos personalizados ──────────────────────────────
+
+% Entrada de experiencia / educación
+\newcommand{\cventry}[4]{%
+  \textbf{\color{darktext}#1} \hfill {\small\color{graytext}#2} \\
+  {\color{accent}\textit{#3}} \hfill {\small\color{graytext}#4}
+  \vspace{4pt}
+}
+
+% Barra de habilidad
+\newcommand{\skillbar}[2]{%
+  \begin{tikzpicture}[baseline=-0.5ex]
+    \fill[lightgray, rounded corners=2pt] (0,0) rectangle (3.2,0.22);
+    \fill[accent, rounded corners=2pt] (0,0) rectangle ({3.2*#2/100},0.22);
+  \end{tikzpicture}
+  \hspace{4pt}{\small #1}%
+  \par\vspace{3pt}
+}
+
+% Etiqueta / tag
+\newcommand{\cvtag}[1]{%
+  \tikz[baseline=-0.5ex]{
+    \node[fill=softbg, draw=lightgray, rounded corners=8pt,
+          inner xsep=7pt, inner ysep=3pt,
+          font=\small\bfseries\color{darktext}] {#1};
+  }\hspace{1pt}%
+}
+
+%==========================================================
+%  DOCUMENTO
+%==========================================================
+\begin{document}
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  ENCABEZADO                                           ║
+% ╚════════════════════════════════════════════════════════╝
+\begin{center}
+  {\Huge\bfseries\color{darktext} Tu Nombre Completo}\\[8pt]
+  {\large\color{accent} Desarrollador Full Stack}\\[12pt]
+  {\small\color{graytext}
+    \faEnvelope\hspace{4pt}\href{mailto:tu@email.com}{tu@email.com}
+    \hspace{12pt}
+    \faPhone*\hspace{4pt}+52 123 456 7890
+    \hspace{12pt}
+    \faMapMarker*\hspace{4pt}Ciudad de México, México
+  }\\[4pt]
+  {\small\color{graytext}
+    \faGithub\hspace{4pt}\href{https://github.com/tuusuario}{github.com/tuusuario}
+    \hspace{12pt}
+    \faLinkedin\hspace{4pt}\href{https://linkedin.com/in/tuusuario}{linkedin.com/in/tuusuario}
+    \hspace{12pt}
+    \faGlobe\hspace{4pt}\href{https://tuportafolio.com}{tuportafolio.com}
+  }
+\end{center}
+
+\vspace{-2pt}
+\textcolor{accent}{\rule{\linewidth}{2pt}}
+\vspace{6pt}
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  PERFIL PROFESIONAL                                   ║
+% ╚════════════════════════════════════════════════════════╝
+\section{\faUser\hspace{6pt}Perfil Profesional}
+
+Desarrollador Full Stack con más de 5 años de experiencia diseñando y
+construyendo aplicaciones web escalables y de alto rendimiento.
+Especializado en React, Node.js y arquitecturas en la nube.
+Apasionado por el código limpio, las buenas prácticas y la
+colaboración en equipo. Busco contribuir en proyectos innovadores
+donde pueda aportar valor técnico y seguir creciendo profesionalmente.
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  EXPERIENCIA LABORAL                                  ║
+% ╚════════════════════════════════════════════════════════╝
+\section{\faBriefcase\hspace{6pt}Experiencia Laboral}
+
+\cventry{Desarrollador Full Stack Senior}{Ene 2022 --- Presente}{Empresa Tecnológica S.A.}{Ciudad de México}
+\begin{itemize}[leftmargin=14pt, itemsep=1pt, topsep=0pt]
+  \item Lideré el rediseño del sistema principal, mejorando el rendimiento en un 40\%.
+  \item Implementé arquitectura de microservicios con Node.js, Docker y Kubernetes.
+  \item Mentoría técnica a un equipo de 4 desarrolladores junior.
+  \item Automatización de pipelines CI/CD reduciendo tiempos de deploy en 60\%.
+\end{itemize}
+\vspace{8pt}
+
+\cventry{Desarrollador Frontend}{Mar 2019 --- Dic 2021}{Agencia Digital Creativa}{Ciudad de México}
+\begin{itemize}[leftmargin=14pt, itemsep=1pt, topsep=0pt]
+  \item Desarrollé interfaces interactivas con React y TypeScript para +20 clientes.
+  \item Integración de APIs REST y GraphQL con manejo de estado global (Redux, Zustand).
+  \item Optimización de rendimiento web, SEO y accesibilidad (WCAG 2.1).
+\end{itemize}
+\vspace{8pt}
+
+\cventry{Practicante de Desarrollo Web}{Jun 2018 --- Feb 2019}{Startup Innovadora}{Guadalajara}
+\begin{itemize}[leftmargin=14pt, itemsep=1pt, topsep=0pt]
+  \item Desarrollo de landing pages responsivas con HTML, CSS y JavaScript vanilla.
+  \item Mantenimiento y consultas optimizadas en bases de datos MySQL.
+\end{itemize}
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  EDUCACIÓN                                            ║
+% ╚════════════════════════════════════════════════════════╝
+\section{\faGraduationCap\hspace{6pt}Educación}
+
+\cventry{Ingeniería en Sistemas Computacionales}{2014 --- 2018}{Universidad Nacional Autónoma}{Ciudad de México}
+\begin{itemize}[leftmargin=14pt, itemsep=1pt, topsep=0pt]
+  \item Titulado con mención honorífica. Promedio general: 9.2/10
+  \item Tesis: \textit{Optimización de algoritmos de búsqueda en grafos distribuidos.}
+\end{itemize}
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  HABILIDADES TÉCNICAS                                 ║
+% ╚════════════════════════════════════════════════════════╝
+\section{\faCode\hspace{6pt}Habilidades Técnicas}
+
+\begin{multicols}{2}
+
+\textbf{\color{darktext}Frontend}\\[4pt]
+\skillbar{React / Next.js}{95}
+\skillbar{TypeScript}{90}
+\skillbar{HTML / CSS / Tailwind}{85}
+\skillbar{Vue.js}{70}
+
+\columnbreak
+
+\textbf{\color{darktext}Backend \& DevOps}\\[4pt]
+\skillbar{Node.js / Express}{90}
+\skillbar{Python / Django}{75}
+\skillbar{PostgreSQL / MongoDB}{80}
+\skillbar{Docker / Kubernetes}{75}
+
+\end{multicols}
+
+\vspace{2pt}
+\textbf{\color{darktext}Herramientas \& Otros}\hspace{8pt}
+\cvtag{Git}\cvtag{GitHub Actions}\cvtag{AWS}\cvtag{Linux}\cvtag{Figma}\cvtag{Jira}\cvtag{Scrum}\cvtag{Jest}
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  CERTIFICACIONES                                      ║
+% ╚════════════════════════════════════════════════════════╝
+\section{\faCertificate\hspace{6pt}Certificaciones}
+
+\begin{itemize}[leftmargin=14pt, itemsep=3pt, topsep=0pt]
+  \item \textbf{AWS Certified Developer -- Associate} \hfill {\small\color{graytext}2023}
+  \item \textbf{Meta Front-End Developer Professional Certificate} \hfill {\small\color{graytext}2022}
+  \item \textbf{Scrum Master Certified (SMC)} \hfill {\small\color{graytext}2021}
+\end{itemize}
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  IDIOMAS                                              ║
+% ╚════════════════════════════════════════════════════════╝
+\section{\faLanguage\hspace{6pt}Idiomas}
+
+\begin{tabularx}{\textwidth}{X X X}
+  \textbf{Español} --- Nativo &
+  \textbf{Inglés} --- Avanzado (C1) &
+  \textbf{Portugués} --- Básico (A2)
+\end{tabularx}
+
+% ╔════════════════════════════════════════════════════════╗
+% ║  PROYECTOS DESTACADOS                                 ║
+% ╚════════════════════════════════════════════════════════╝
+\section{\faRocket\hspace{6pt}Proyectos Destacados}
+
+\textbf{\color{darktext}E-Commerce Platform} \hfill
+\href{https://github.com/tuusuario/ecommerce}{\faGithub\hspace{2pt}\small\color{accent}Ver repositorio}\\
+{\small Plataforma de comercio electrónico construida con Next.js, Stripe y PostgreSQL.
+Soporta +10k usuarios concurrentes con SSR y caché distribuida.}
+\vspace{8pt}
+
+\textbf{\color{darktext}Task Manager API} \hfill
+\href{https://github.com/tuusuario/task-api}{\faGithub\hspace{2pt}\small\color{accent}Ver repositorio}\\
+{\small API RESTful con Node.js, Express y MongoDB. Autenticación JWT,
+rate limiting y documentación con Swagger. +50 estrellas en GitHub.}
+
+\end{document}
