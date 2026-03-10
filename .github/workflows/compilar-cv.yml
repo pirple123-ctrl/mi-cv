@@ -2,6 +2,7 @@
 #  GitHub Actions — Compilar CV en LaTeX a PDF
 #  Se ejecuta cada vez que haces push a main
 #  El PDF queda disponible para descargar en Releases
+#  y se publica una vista previa en GitHub Pages
 # ============================================================
 
 name: Compilar CV a PDF
@@ -9,10 +10,12 @@ name: Compilar CV a PDF
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:       # permite ejecutarlo manualmente
+  workflow_dispatch:
 
 permissions:
-  contents: write          # necesario para crear releases
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -28,9 +31,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: cv.tex
-          latexmk_use_xelatex: false   # usa pdflatex (compatible con fontawesome5)
 
-      # 3. Subir el PDF como artefacto (descargable desde Actions)
+      # 3. Subir el PDF como artefacto
       - name: Subir PDF como artefacto
         uses: actions/upload-artifact@v4
         with:
@@ -38,7 +40,7 @@ jobs:
           path: cv.pdf
           retention-days: 90
 
-      # 4. Crear/actualizar un Release con el PDF
+      # 4. Crear Release con el PDF
       - name: Obtener fecha actual
         id: date
         run: echo "date=$(date +'%Y-%m-%d_%H%M')" >> $GITHUB_OUTPUT
@@ -52,6 +54,35 @@ jobs:
             📄 **CV compilado automáticamente**
             
             Descarga el PDF adjunto 👇
+          files: cv.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 5. Preparar GitHub Pages con vista previa
+      - name: Preparar archivos para Pages
+        run: |
+          mkdir -p _site
+          cp cv.pdf _site/cv.pdf
+          cp index.html _site/index.html
+
+      - name: Subir artefacto de Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
           files: cv.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
