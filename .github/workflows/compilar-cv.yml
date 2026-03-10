@@ -1,0 +1,57 @@
+# ============================================================
+#  GitHub Actions — Compilar CV en LaTeX a PDF
+#  Se ejecuta cada vez que haces push a main
+#  El PDF queda disponible para descargar en Releases
+# ============================================================
+
+name: Compilar CV a PDF
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:       # permite ejecutarlo manualmente
+
+permissions:
+  contents: write          # necesario para crear releases
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clonar el repositorio
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      # 2. Compilar LaTeX a PDF
+      - name: Compilar LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv.tex
+          latexmk_use_xelatex: false   # usa pdflatex (compatible con fontawesome5)
+
+      # 3. Subir el PDF como artefacto (descargable desde Actions)
+      - name: Subir PDF como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: cv-pdf
+          path: cv.pdf
+          retention-days: 90
+
+      # 4. Crear/actualizar un Release con el PDF
+      - name: Obtener fecha actual
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d_%H%M')" >> $GITHUB_OUTPUT
+
+      - name: Crear Release con el PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: cv-${{ steps.date.outputs.date }}
+          name: "CV Actualizado — ${{ steps.date.outputs.date }}"
+          body: |
+            📄 **CV compilado automáticamente**
+            
+            Descarga el PDF adjunto 👇
+          files: cv.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
