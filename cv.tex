@@ -1,10 +1,8 @@
 %==========================================================
 %  CV — CRISTIAN TELLEZ QUIROGA (Espanol)
-%  Adaptado para: IBM Customer Success Manager (Public Cloud)
 %==========================================================
 \documentclass[11pt,a4paper]{article}
 
-% -- Paquetes --------------------------------------------------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
@@ -21,14 +19,12 @@
 \usepackage{parskip}
 \usepackage{calc}
 
-% -- Colores ---------------------------------------------------
 \definecolor{accent}{HTML}{B71C1C}
 \definecolor{darktext}{HTML}{1A1A2E}
 \definecolor{graytext}{HTML}{555555}
 \definecolor{lightgray}{HTML}{E0E0E0}
 \definecolor{softbg}{HTML}{F5F5F5}
 
-% -- Configuracion general ------------------------------------
 \hypersetup{
     colorlinks=true,
     linkcolor=accent,
@@ -39,7 +35,6 @@
 \setlength{\parindent}{0pt}
 \pagestyle{empty}
 
-% -- Formato de secciones -------------------------------------
 \titleformat{\section}
   {\Large\bfseries\color{accent}}
   {}
@@ -49,7 +44,6 @@
 
 \titlespacing*{\section}{0pt}{9pt}{6pt}
 
-% -- Comandos personalizados ----------------------------------
 \newcommand{\cventry}[4]{%
   \textbf{\color{darktext}#1} \hfill {\small\color{graytext}#2} \\
   {\color{accent}\textit{#3}} \hfill {\small\color{graytext}#4}
@@ -73,15 +67,11 @@
   }\hspace{1pt}%
 }
 
-%==========================================================
-%  DOCUMENTO
-%==========================================================
 \begin{document}
 
-% -- ENCABEZADO -----------------------------------------------
 \begin{center}
   {\Huge\bfseries\color{darktext} Cristian Tellez Quiroga}\\[8pt]
-  {\large\color{accent} IBM Cloud Technical \textbar{} Aspirante a Customer Success Manager (Public Cloud)}\\[12pt]
+  {\large\color{accent} Ingenier\'ia Electr\'onica \textbar{} Cloud \& Telecomunicaciones}\\[12pt]
   {\small\color{graytext}
     \faEnvelope\hspace{4pt}\href{mailto:cftellezq@gmail.com}{cftellezq@gmail.com}
     \hspace{12pt}
@@ -91,8 +81,6 @@
   }\\[4pt]
   {\small\color{graytext}
     \faLinkedin\hspace{4pt}\href{https://linkedin.com/in/jclq}{linkedin.com/in/jclq}
-    \hspace{12pt}
-    \faGithub\hspace{4pt}\href{https://github.com/tu-usuario}{github.com/tu-usuario}
   }
 \end{center}
 
@@ -100,21 +88,19 @@
 \textcolor{accent}{\rule{\linewidth}{2pt}}
 \vspace{6pt}
 
-% -- PERFIL PROFESIONAL ---------------------------------------
 \section{\faUser\hspace{6pt}Perfil Profesional}
 
-Ingeniero Electr\'onico en etapa final de carrera y practicante en \textbf{IBM Global Sales}, donde he dedicado la mayor parte del programa al \'area de \textbf{Cloud}. Combino una base t\'ecnica hands-on en IBM Cloud (arquitecturas VPC, continuidad y recuperaci\'on ante desastres, conectividad h\'ibrida) con habilidades de comunicaci\'on y trabajo cercano al cliente: propuestas, documentos t\'ecnicos y demostraciones. Me motiva traducir problemas tecnol\'ogicos complejos a un lenguaje claro para perfiles desde ingenieros hasta tomadores de decisi\'on, y busco crecer hacia un rol de Customer Success Manager en Public Cloud aportando criterio t\'ecnico, enfoque \'agil y orientaci\'on al valor del cliente.
+Perfil t\'ecnico-comercial en pr\'actica en \textbf{IBM Global Sales}, enfocado en el \'area de \textbf{Cloud}: preparaci\'on de versiones preliminares de BOM y costeo, y dimensionamiento de capacidades para soluciones sobre IBM Cloud. Acompa\~no al equipo t\'ecnico en reuniones con clientes y partners para ajustar las propuestas a sus necesidades, y cuento con experiencia hands-on de nivel intermedio en nube p\'ublica (IBM Cloud y fundamentos de AWS), redes y herramientas de datos/IA (watsonx). Me motiva el trabajo cercano al cliente y traducir lo t\'ecnico a un lenguaje claro para perfiles t\'ecnicos y de negocio.
 
-% -- EXPERIENCIA LABORAL --------------------------------------
 \section{\faBriefcase\hspace{6pt}Experiencia Laboral}
 
 \cventry{Practicante --- IBM Global Sales (Future Club)}{Sep 2025 --- Presente}{IBM}{Bogot\'a, Colombia}
 \begin{itemize}[leftmargin=14pt, itemsep=1pt, topsep=0pt]
-  \item Apoyo continuo al equipo de \textbf{Cloud} durante la mayor parte del programa: dise\~no y documentaci\'on de arquitecturas en \textbf{IBM Cloud (VPC)} para propuestas a clientes.
-  \item Participaci\'on en una propuesta de \textbf{Disaster Recovery} para un cliente del sector financiero: replicaci\'on con Veeam (x86), soluci\'on IBM i sobre POWER, conectividad (Direct Link, firewall) y WAF con IBM Cloud Internet Services.
-  \item An\'alisis de BOM, estimaci\'on de licenciamiento y costos, y elaboraci\'on de documentos de Q\&A t\'ecnico para el cliente.
-  \item Preparaci\'on y ejecuci\'on de \textbf{demostraciones t\'ecnicas}; exploraci\'on hands-on de \textbf{watsonx} (Orchestrate, watsonx.ai) y servicios serverless (Code Engine) para casos de uso de IA empresarial.
-  \item Asistencia a reuniones y actividades comerciales junto al equipo de ventas, con acompa\~namiento de profesionales asignados.
+  \item Preparaci\'on de versiones preliminares de \textbf{BOM} y costeo para propuestas de soluci\'on sobre IBM Cloud, revisadas por el tech seller responsable de la oportunidad.
+  \item Dimensionamiento y recomendaci\'on de capacidades (m\'aquinas y recursos) para soluciones de nube, respaldo y replicaci\'on.
+  \item Acompa\~namiento al equipo t\'ecnico en reuniones con clientes y partners, con ajuste iterativo de las propuestas a partir de su retroalimentaci\'on.
+  \item Exploraci\'on hands-on de IBM Cloud (VPC), \textbf{watsonx} (Orchestrate, watsonx.ai) y servicios serverless (Code Engine).
+  \item Preparaci\'on de demostraciones t\'ecnicas y participaci\'on en actividades comerciales del equipo de ventas.
 \end{itemize}
 \vspace{5pt}
 
@@ -122,7 +108,7 @@ Ingeniero Electr\'onico en etapa final de carrera y practicante en \textbf{IBM G
 \begin{itemize}[leftmargin=14pt, itemsep=1pt, topsep=0pt]
   \item Operaci\'on diaria de laboratorios: apertura/cierre, configuraci\'on de estaciones de trabajo y mantenimiento de sistemas.
   \item Instalaci\'on, actualizaci\'on y configuraci\'on de software (sistemas operativos y herramientas acad\'emicas).
-  \item Supervisi\'on de inventario de hardware y licencias de software, asegurando la disponibilidad de recursos.
+  \item Supervisi\'on de inventario de hardware y licencias de software.
 \end{itemize}
 \vspace{5pt}
 
@@ -132,7 +118,6 @@ Ingeniero Electr\'onico en etapa final de carrera y practicante en \textbf{IBM G
   \item Apoyo a docentes en la preparaci\'on de experimentos y la soluci\'on de problemas t\'ecnicos.
 \end{itemize}
 
-% -- EDUCACION ------------------------------------------------
 \section{\faGraduationCap\hspace{6pt}Educaci\'on}
 
 \cventry{Ingenier\'ia Electr\'onica (en curso, etapa final)}{2019 --- Presente}{Universidad Distrital Francisco Jos\'e de Caldas}{Bogot\'a, Colombia}
@@ -144,32 +129,28 @@ Ingeniero Electr\'onico en etapa final de carrera y practicante en \textbf{IBM G
 
 \cventry{Educaci\'on Media}{2012 --- 2018}{Colegio Nacional Nicol\'as Esguerra}{Bogot\'a, Colombia}
 
-% -- HABILIDADES TECNICAS -------------------------------------
 \section{\faCode\hspace{6pt}Habilidades T\'ecnicas}
 
 \begin{multicols}{2}
 
-\textbf{\color{darktext}Cloud e Infraestructura}\\[4pt]
-\skillbar{IBM Cloud (VPC / IaaS)}{75}
-\skillbar{Arquitectura DR y Alta Disponibilidad}{70}
-\skillbar{Veeam / Backup y Replicaci\'on}{70}
-\skillbar{Redes (OSI, IPv4, Direct Link)}{75}
+\textbf{\color{darktext}Cloud y Redes}\\[4pt]
+\skillbar{IBM Cloud (VPC / IaaS)}{55}
+\skillbar{Dimensionamiento de capacidades}{55}
+\skillbar{Redes (OSI, IPv4)}{60}
 
 \columnbreak
 
 \textbf{\color{darktext}Datos, IA y Herramientas}\\[4pt]
-\skillbar{watsonx (Orchestrate / .ai)}{65}
-\skillbar{AWS (fundamentos de nube)}{70}
-\skillbar{Excel avanzado / modelos de costeo}{85}
-\skillbar{Linux / CLI / WSL}{75}
+\skillbar{watsonx (Orchestrate / .ai)}{55}
+\skillbar{AWS (fundamentos de nube)}{60}
+\skillbar{Excel}{55}
 
 \end{multicols}
 
 \vspace{2pt}
-\textbf{\color{darktext}Otras herramientas y metodolog\'ias}\hspace{8pt}
-\cvtag{IBM Cloud VPC}\cvtag{Veeam}\cvtag{watsonx}\cvtag{Code Engine}\cvtag{Direct Link}\cvtag{Fortinet}\cvtag{Agile / Scrum}\cvtag{Git}\cvtag{Linux}
+\textbf{\color{darktext}Otras herramientas}\hspace{8pt}
+\cvtag{IBM Cloud VPC}\cvtag{Veeam}\cvtag{watsonx}\cvtag{Code Engine}\cvtag{Direct Link}\cvtag{Git}\cvtag{Linux}
 
-% -- CERTIFICACIONES ------------------------------------------
 \section{\faCertificate\hspace{6pt}Certificaciones y Credenciales}
 
 \begin{itemize}[leftmargin=14pt, itemsep=3pt, topsep=0pt]
@@ -178,7 +159,6 @@ Ingeniero Electr\'onico en etapa final de carrera y practicante en \textbf{IBM G
   \item \textbf{AWS Certified Cloud Practitioner} --- En preparaci\'on \hfill {\small\color{graytext}2025}
 \end{itemize}
 
-% -- IDIOMAS --------------------------------------------------
 \section{\faLanguage\hspace{6pt}Idiomas}
 
 \begin{tabularx}{\textwidth}{X X}
@@ -186,14 +166,13 @@ Ingeniero Electr\'onico en etapa final de carrera y practicante en \textbf{IBM G
   \textbf{Ingl\'es} --- Intermedio
 \end{tabularx}
 
-% -- PROYECTOS DESTACADOS -------------------------------------
 \section{\faRocket\hspace{6pt}Proyectos Destacados}
 
-\textbf{\color{darktext}Propuesta de Disaster Recovery --- Cliente del sector financiero}\\
-{\small Arquitectura de DR en IBM Cloud VPC con replicaci\'on Veeam (x86) y soluci\'on IBM i sobre POWER (AS400). Dise\~no de conectividad (Direct Link, firewall), WAF con IBM Cloud Internet Services, an\'alisis de BOM y estimaci\'on de costos y licenciamiento.}
+\textbf{\color{darktext}Dimensionamiento y BOM --- Propuesta de Disaster Recovery (sector financiero)}\\
+{\small Dimensionamiento de capacidades y elaboraci\'on de BOM/costeo para una propuesta de DR sobre IBM Cloud VPC, con replicaci\'on Veeam (x86) e IBM i sobre POWER. Dimensionamiento y ajuste de la conectividad (Direct Link, firewall) y WAF (Cloud Internet Services) seg\'un la necesidad, con apoyo del tech seller responsable.}
 \vspace{5pt}
 
-\textbf{\color{darktext}Agentes de IA con watsonx Orchestrate}\\
-{\small Arquitectura multi-agente e integraci\'on de modelos AutoAI (clasificaci\'on y predicci\'on de churn) desplegados como endpoints en l\'inea, con pruebas de seguridad sobre los agentes (detecci\'on de prompt injection).}
+\textbf{\color{darktext}Agentes de IA con watsonx Orchestrate (hands-on)}\\
+{\small Construcci\'on de una arquitectura multi-agente e integraci\'on de modelos AutoAI desplegados como endpoints en l\'inea, incluyendo pruebas de seguridad sobre los agentes (detecci\'on de prompt injection), en entorno de pr\'actica.}
 
 \end{document}
